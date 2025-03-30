@@ -77,11 +77,11 @@ export default function Home() {
         }
     
         const data = {
-            drone_id: 65010144,
-            drone_name: "CHIRATTIKAN NINCHAI",
-            celsius: parseInt(celsiusValue),
-            country: "Thailand",
-        };
+            "drone_id": "65010224",
+            "drone_name": "toei",
+            "celsius": 582,
+            "country": "laos"
+          };          
     
         setLoading(true);
         setError(null);
