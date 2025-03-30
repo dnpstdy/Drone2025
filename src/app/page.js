@@ -100,7 +100,6 @@ export default function Home() {
             const result = await response.json();
     
             if (response.ok) {
-                setResponseData(result.data);
                 form.reset();
             } else {
                 setError(result.message || 'Failed to submit data');
@@ -180,12 +179,8 @@ export default function Home() {
           ) : null}
         </div>
         <div className='flex'>
-          <p className='text-[#2D3437] mb-0'>Population :</p>
-          <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.population !== undefined ? item.population.toLocaleString() : 'undefined'}</p>
-        </div>
-        <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Weight : </p>
-          <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.weight !== undefined ? item.weight.toLocaleString() : 'undefined'}</p>
+          <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.weight != null ? item.weight.toLocaleString() : 'undefined'}</p>
         </div>
         <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Light : </p>
