@@ -70,18 +70,19 @@ export default function Home() {
         event.preventDefault();
         const form = event.target;
         const formData = new FormData(form);
-        const celsiusValue = formData.get('celsius');    
+        const celsiusValue = formData.get('celsius');
+    
         if (!celsiusValue || isNaN(parseInt(celsiusValue))) {
             setError('Please provide a valid temperature in Celsius');
             return;
         }
     
         const data = {
-            "drone_id": "65010224",
+            "drone_id": 65010144,
             "drone_name": "toei",
-            "celsius": 582,
-            "country": "laos"
-          };          
+            "celsius": parseInt(celsiusValue), 
+            "country": "Laos"
+        };
     
         setLoading(true);
         setError(null);
@@ -91,6 +92,7 @@ export default function Home() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer 20250301efx' 
                 },
                 body: JSON.stringify(data),
             });
@@ -101,7 +103,7 @@ export default function Home() {
                 setResponseData(result.data);
                 form.reset();
             } else {
-                setError(result.message);
+                setError(result.message || 'Failed to submit data');
             }
         } catch (error) {
             setError('Network error: ' + error.message);
