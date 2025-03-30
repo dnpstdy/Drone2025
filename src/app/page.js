@@ -184,6 +184,10 @@ export default function Home() {
           <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.population !== undefined ? item.population.toLocaleString() : 'undefined'}</p>
         </div>
         <div className='flex'>
+          <p className='text-[#2D3437] mb-0'>Weight : </p>
+          <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.weight !== undefined ? item.weight.toLocaleString() : 'undefined'}</p>
+        </div>
+        <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Light : </p>
           <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.light || 'undefined'}</p>
           {item.light && (
