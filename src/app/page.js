@@ -14,11 +14,11 @@ export default function Home() {
         fetchAllDrones();
     }, []);
 
-    const fetchAllDrones = async () => {
+    const fetchAllDrones = async () => {        
         setLoading(true);
         setError('');
         try {
-            const response = await fetch('https://65010051-drone-api.vercel.app/config');
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_PATH}/config`);
                 if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -45,7 +45,7 @@ export default function Home() {
             try {
                 console.log(droneId);
                 
-                const response = await fetch(`https://65010051-drone-api.vercel.app/config/${droneId}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_PATH}/config/${droneId}`);
                 const data = await response.json();
                 if (data.data) {
                     setDrones([data.data]); 
@@ -77,8 +77,8 @@ export default function Home() {
         }
     
         const data = {
-            drone_id: 65010051,
-            drone_name: "Kasidit Thong-on",
+            drone_id: 65010144,
+            drone_name: "CHIRATTIKAN NINCHAI",
             celsius: parseInt(celsiusValue),
             country: "Thailand",
         };
@@ -87,7 +87,7 @@ export default function Home() {
         setError(null);
     
         try {
-            const response = await fetch('https://65010051-drone-api.vercel.app/logs', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_PATH}/logs`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

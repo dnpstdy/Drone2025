@@ -18,7 +18,7 @@ const ViewLog = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch(`https://65010051-drone-api.vercel.app/logs?page=${page}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_PATH}/logs?page=${page}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
