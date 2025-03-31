@@ -111,6 +111,8 @@ export default function Home() {
         }
     };
     
+    const colors = ["#FDF3EA", "#E0F8F2", "#EEECFF", "#D9F2F7", "#FAEDED", "#F1F1F1"];
+
 
     return (
         <div id="app">
@@ -162,7 +164,10 @@ export default function Home() {
             <div className='flex flex-wrap justify-center h-fit'>
   {drones.map(item => (
     <div className='block rounded-lg my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]' key={item.drone_id}>
-      <div className="bg-[#FFFFFF] rounded-lg p-5">
+        <div 
+      className="rounded-lg p-5" 
+      style={{ backgroundColor: colors[Math.floor(Math.random() * colors.length)] }}
+        >        
         <p className='text-[#2D3437] my-2 py-1 px-2 rounded-md font-bold text-4xl mb-0'>{item.drone_id || 'undefined'}</p>
         <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Name : </p>
