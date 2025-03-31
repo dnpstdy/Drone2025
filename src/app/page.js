@@ -130,7 +130,7 @@ export default function Home() {
                 <l-tailspin
                 size="80"
                 stroke="10"
-                speed="0.9"
+                speed="1"
                 color="#1CB1D1" 
                 ></l-tailspin>
                 </div>
