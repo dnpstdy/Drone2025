@@ -128,8 +128,8 @@ export default function Home() {
             {loading ? (
                 <div className='flex items-center justify-center h-screen drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]'>
                 <l-tailspin
-                size="40"
-                stroke="5"
+                size="80"
+                stroke="10"
                 speed="0.9"
                 color="#1CB1D1" 
                 ></l-tailspin>
