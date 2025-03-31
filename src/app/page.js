@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
-import countryAbbreviations from './constant';
 
 export default function Home() {
     const [drones, setDrones] = useState([]);
@@ -140,15 +139,16 @@ export default function Home() {
         <div className="flex flex-col justify-center">
             <form className=''>
                 <label htmlFor="celsius" className='text-[#FFFFFF] font-bold text-3xl'>View Config</label>
-                <div className="flex flex-col items-center drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]">
+                <div className="flex flex-col items-center">
                 <input 
-                    className='rounded-3xl py-2 px-5 my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto font-semibold'
+                    className='rounded-3xl py-2 px-5 my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto 
+                                bg-transparent border border-white text-[#5F5C80] placeholder-white focus:outline-none'
                     type="text" 
                     value={droneId} 
                     onChange={(e) => setDroneId(e.target.value)} 
-                    placeholder="Enter drone ID" 
-                />
-                <button className='my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto py-2 px-5 bg-[#C1DEE2] text-[#2D3437] font-semibold rounded-3xl drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] border border-[#C1DEE2] ' onClick={searchDrone}>Search</button>
+                    placeholder="Search for Drone ID" 
+                    />
+                <button className='my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto py-2 px-5 bg-[#AE3966] text-white font-semibold rounded-3xl' onClick={searchDrone}>Search</button>
         </div>
             </form>
 
@@ -180,20 +180,10 @@ export default function Home() {
         <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Country : </p>
           <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.country || 'undefined'}</p>
-          {item.country ? (
-            <img 
-              src={`https://flagsapi.com/${countryAbbreviations[item.country] || item.country}/shiny/24.png`}
-              className='rounded-[50%] mx-2' 
-              alt={`Flag of ${item.country}`} 
-            />
-          ) : null}
         </div>
         <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Light : </p>
           <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.light || 'undefined'}</p>
-          {item.light && (
-            <div className={`rounded-[50%] w-[24px] h-[24px] mt-1.5 mx-1 ${item.light === 'on' ? 'bg-[#A7EE8E]' : item.light === 'off' ? 'bg-[#E76C6C]' : 'bg-white'}`}></div>
-          )}
         </div>
       </div>
     </div>

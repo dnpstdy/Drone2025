@@ -15,12 +15,9 @@ export default function RootLayout({ children }) {
           type="module" 
           strategy="lazyOnload" 
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         {children}
-      </body>
       <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/tailspin.js"></script>
+      </body>
     </html>
   );
 }
