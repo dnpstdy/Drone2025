@@ -135,39 +135,43 @@ export default function Home() {
                 ></l-tailspin>
                 </div>
             ) : (
-            <div className="flex flex-col justify-evenly">
-                <div className='mb-3 mx-3'>
-                <form className=''>
-                <label htmlFor="celsius" className='flex bg-[#2D3437] text-[#C1DEE2] font-semibold '>Search Drone Config</label>
-                <div className="flex drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]">
+        <div className="flex flex-col justify-center">
+            <form className=''>
+                <label htmlFor="celsius" className='text-[#FFFFFF] font-bold text-3xl'>View Config</label>
+                <div className="flex flex-col items-center drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]">
                 <input 
-                    className='rounded-l-lg px-3 '
+                    className='rounded-3xl py-2 px-5 my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto font-semibold'
                     type="text" 
                     value={droneId} 
                     onChange={(e) => setDroneId(e.target.value)} 
                     placeholder="Enter drone ID" 
                 />
-                <button className='py-2 px-5 bg-[#C1DEE2] text-[#2D3437] font-semibold rounded-r-lg drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] border border-[#C1DEE2] ' onClick={searchDrone}>Search</button>
-            </div>
+                <button className='my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto py-2 px-5 bg-[#C1DEE2] text-[#2D3437] font-semibold rounded-3xl drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] border border-[#C1DEE2] ' onClick={searchDrone}>Search</button>
+        </div>
             </form>
-                <form id="tempLogForm" onSubmit={handleSubmit} className='my-5'>
+
+                {/* <form id="tempLogForm" onSubmit={handleSubmit} className='my-5'>
                 <label htmlFor="celsius" className='flex bg-[#2D3437] text-[#C1DEE2] font-semibold '>INPUT Temperature (°C)</label>
                     <div className='flex drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]'>
                         <input className='rounded-l-lg px-3' placeholder="Enter Temperature (°C)"   type="number" id="celsius" name="celsius" required />
                         <button className='py-2 px-5 bg-[#C1DEE2] text-[#2D3437] font-semibold rounded-r-lg drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] border border-[#C1DEE2] ' type="submit">Submit</button>
                     </div>
-                </form>
-            </div>
+                </form> */}
 
 
-            <div className='flex flex-wrap justify-start h-fit'>
+            <div className='flex flex-wrap justify-center h-fit'>
   {drones.map(item => (
-    <div className='block rounded-lg my-3 mx-3 w-[425px] h-auto drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]' key={item.drone_id}>
-      <div className="flex rounded-t-lg bg-[#C1DEE2] p-5">
-        <p className='bg-[#2D3437] text-[#C1DEE2] py-1 px-2 rounded-md font-bold mb-0'>{item.drone_id || 'undefined'}</p>
-        <p className='my-1 mx-3 text-[#2D3437] font-bold mb-0'>{item.drone_name || 'undefined'}</p>
-      </div>
-      <div className="bg-[#FFFFFF] rounded-b-lg p-5">
+    <div className='block rounded-lg my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]' key={item.drone_id}>
+      <div className="bg-[#FFFFFF] rounded-lg p-5">
+        <p className='text-[#2D3437] my-2 py-1 px-2 rounded-md font-bold text-4xl mb-0'>{item.drone_id || 'undefined'}</p>
+        <div className='flex'>
+          <p className='text-[#2D3437] mb-0'>Name : </p>
+          <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.drone_name || 'undefined'}</p>
+        </div>
+        <div className='flex'>
+          <p className='text-[#2D3437] mb-0'>Weight : </p>
+          <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.weight != null ? item.weight.toLocaleString() : 'undefined'}</p>
+        </div>
         <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Country : </p>
           <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.country || 'undefined'}</p>
@@ -178,10 +182,6 @@ export default function Home() {
               alt={`Flag of ${item.country}`} 
             />
           ) : null}
-        </div>
-        <div className='flex'>
-          <p className='text-[#2D3437] mb-0'>Weight : </p>
-          <p className='mt-[1px] mx-1 text-[#2D3437] font-bold mb-0'>{item.weight != null ? item.weight.toLocaleString() : 'undefined'}</p>
         </div>
         <div className='flex'>
           <p className='text-[#2D3437] mb-0'>Light : </p>
