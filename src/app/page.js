@@ -127,14 +127,15 @@ export default function Home() {
 
             {loading ? (
                 <div className='flex items-center justify-center h-screen drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]'>
-                <l-bouncy
-                    size="100"
-                    speed="1.75"
-                    color="#C1DEE2" 
-                ></l-bouncy>
+                <l-tailspin
+                size="40"
+                stroke="5"
+                speed="0.9"
+                color="#1CB1D1" 
+                ></l-tailspin>
                 </div>
             ) : (
-            <div className="flex justify-evenly">
+            <div className="flex flex-col justify-evenly">
                 <div className='mb-3 mx-3'>
                 <form className=''>
                 <label htmlFor="celsius" className='flex bg-[#2D3437] text-[#C1DEE2] font-semibold '>Search Drone Config</label>

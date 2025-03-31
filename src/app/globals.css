@@ -4,20 +4,20 @@
 
 
 :root {
-  --background: #2D3437;
-  --foreground: #171717;
+  --background: #1B2431;
+  --foreground: #2E2F35;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1B2431;
+    --foreground: #2E2F35;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: #2E2F35;
+  background: #1B2431;
   font-family: 'Rajdhani';
   text-transform: uppercase;
   font-size: 24px;
