@@ -30,6 +30,38 @@ body {
 
 #app {
   margin: 20px auto;
+  margin-top: 150px;
   padding: 2vw;
   text-align: center;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  border-radius: 20px;
+  height: 5px;
+  bottom: -10px;
+  left: 0;
+  background-color: #0D988C;
+  transition: transform 0.5s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+}
+
+
+.hover-underline-animation.right::after {
+  transform-origin: bottom left;
+}
+
+.hover-underline-animation.right:hover::after {
+  transform-origin: bottom right;
 }

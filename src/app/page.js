@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link'
 
 export default function Home() {
     const [drones, setDrones] = useState([]);
@@ -63,65 +62,11 @@ export default function Home() {
         }
     };
     
-    
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
-        const celsiusValue = formData.get('celsius');
-    
-        if (!celsiusValue || isNaN(parseInt(celsiusValue))) {
-            setError('Please provide a valid temperature in Celsius');
-            return;
-        }
-    
-        const data = {
-            "drone_id": 65010144,
-            "drone_name": "toei",
-            "celsius": parseInt(celsiusValue), 
-            "country": "Laos"
-        };
-    
-        setLoading(true);
-        setError(null);
-    
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_PATH}/logs`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 20250301efx' 
-                },
-                body: JSON.stringify(data),
-            });
-    
-            const result = await response.json();
-    
-            if (response.ok) {
-                form.reset();
-            } else {
-                setError(result.message || 'Failed to submit data');
-            }
-        } catch (error) {
-            setError('Network error: ' + error.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-    
     const colors = ["#FDF3EA", "#E0F8F2", "#EEECFF", "#D9F2F7", "#FAEDED", "#F1F1F1"];
 
 
     return (
-        <div id="app">
-            <nav className='mt-5 mb-16'>
-                <ul className="flex flex-row">
-                    <li className='py-2 px-5 bg-[#C1DEE2] text-[#2D3437] font-semibold rounded-[15px] drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] border border-[#C1DEE2] '><button onClick={fetchAllDrones}>View Config</button></li>
-                    <li className='mx-3 py-2 px-5 bg-[#2D3437] text-[#C1DEE2] font-semibold rounded-[15px] hover:drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] hover:border  hover:border-[#C1DEE2] '><Link href="/viewLog">View Logs</Link></li>
-                </ul>
-            </nav>
-
+        <div className='mt-[150px] text-center'>
             <div id="alertContainer">
                 {error && <div className="">{error}</div>}
             </div>
@@ -136,9 +81,9 @@ export default function Home() {
                 ></l-tailspin>
                 </div>
             ) : (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center mt-16">
             <form className=''>
-                <label htmlFor="celsius" className='text-[#FFFFFF] font-bold text-3xl'>View Config</label>
+                <label htmlFor="celsius" className='text-[#FFFFFF] font-bold text-6xl'>View Config</label>
                 <div className="flex flex-col items-center">
                 <input 
                     className='rounded-3xl py-2 px-5 my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto 
@@ -151,15 +96,6 @@ export default function Home() {
                 <button className='my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto py-2 px-5 bg-[#AE3966] text-white font-semibold rounded-3xl' onClick={searchDrone}>Search</button>
         </div>
             </form>
-
-                {/* <form id="tempLogForm" onSubmit={handleSubmit} className='my-5'>
-                <label htmlFor="celsius" className='flex bg-[#2D3437] text-[#C1DEE2] font-semibold '>INPUT Temperature (°C)</label>
-                    <div className='flex drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]'>
-                        <input className='rounded-l-lg px-3' placeholder="Enter Temperature (°C)"   type="number" id="celsius" name="celsius" required />
-                        <button className='py-2 px-5 bg-[#C1DEE2] text-[#2D3437] font-semibold rounded-r-lg drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] border border-[#C1DEE2] ' type="submit">Submit</button>
-                    </div>
-                </form> */}
-
 
             <div className='flex flex-wrap justify-center h-fit'>
   {drones.map(item => (

@@ -1,5 +1,6 @@
 import "./globals.css";
 import Script from "next/script";
+import Navbar from "./components/navbar";
 
 export const metadata = {
   title: "65010144_drone_api_front", 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
           type="module" 
           strategy="lazyOnload" 
         />
+        <Navbar/>
         {children}
       <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/tailspin.js"></script>
       </body>

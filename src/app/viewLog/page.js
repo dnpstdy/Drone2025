@@ -128,13 +128,7 @@ const ViewLog = () => {
     
 
     return (
-        <div id="app">
-             <nav className='mt-5 mb-16'>
-             <ul className="flex flex-row">
-                <li className='py-2 px-5 bg-[#2D3437] text-[#C1DEE2] font-semibold rounded-[15px] hover:border  hover:border-[#C1DEE2] '><Link href="/">View Config</Link></li>
-                <li className='mx-3 py-2 px-5 bg-[#C1DEE2] text-[#2D3437] font-semibold rounded-[15px] drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)] border border-[#C1DEE2] '><Link href="/viewLog">View Logs</Link></li>
-                </ul>
-            </nav>
+        <div className='mt-[150px] text-center'>
             {loading ? (
                 <div className='flex items-center justify-center h-screen drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]'>
                 <l-bouncy
