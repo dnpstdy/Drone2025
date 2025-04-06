@@ -68,8 +68,15 @@ export default function Home() {
     return (
         <div className='mt-[150px] text-center'>
             <div id="alertContainer">
-                {error && <div className="">{error}</div>}
+        {error && (
+            <div className="mx-auto w-fit flex items-center gap-2 px-4 py-3 rounded-lg bg-red-100 border border-red-300 text-red-700 text-sm font-medium shadow-md animate-fade-in">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01M12 17h.01M12 7h.01M5.5 20h13a1 1 0 001-1v-1.5a1 1 0 00-1-1h-13a1 1 0 00-1 1V19a1 1 0 001 1z" />
+                </svg>
+                {error}
             </div>
+        )}
+    </div>
 
             {loading ? (
                 <div className='flex items-center justify-center h-screen drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]'>
