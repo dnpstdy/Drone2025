@@ -22,11 +22,12 @@ export default function tempLog() {
     }
 
     const data = {
-      drone_id: 65010144,
-      drone_name: "toei",
+      drone_id: formData.get("drone_id"),
+      drone_name: formData.get("drone_name"),
       celsius: parseInt(celsiusValue),
-      country: "Laos",
+      country: formData.get("country"),
     };
+    
 
     setLoading(true);
 
@@ -59,57 +60,46 @@ export default function tempLog() {
   };
 
   return (
-    <div className="mt-[150px] text-center">
+    <div className="text-center">
       <div id="alertContainer" className="space-y-2">
         {error && (
-          <div className="mx-auto w-fit flex items-center gap-2 px-4 py-3 rounded-lg bg-red-100 border border-red-300 text-red-700 text-sm font-medium shadow-md animate-fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01M12 17h.01M12 7h.01M5.5 20h13a1 1 0 001-1v-1.5a1 1 0 00-1-1h-13a1 1 0 00-1 1V19a1 1 0 001 1z" />
-            </svg>
-            {error}
-          </div>
+              <div className="text-R p-[10px]">
+                ⚠️ {error}
+              </div>
         )}
         {success && (
-          <div className="mx-auto w-fit flex items-center gap-2 px-4 py-3 rounded-lg bg-green-100 border border-green-300 text-green-700 text-sm font-medium shadow-md animate-fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {success}
-          </div>
+              <div className="text-G p-[10px]">
+              {success}
+            </div>
         )}
       </div>
 
       {loading ? (
-        <div className="flex items-center justify-center h-screen drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]">
-          <l-tailspin size="80" stroke="10" speed="1" color="#1CB1D1"></l-tailspin>
+        <div className="flex items-center justify-center h-screen shadow-custom">
+          <l-momentum
+  size="60"
+  speed="1.1"
+  color="#76899E" 
+></l-momentum>
         </div>
       ) : (
-        <div className="flex flex-col justify-center mt-16">
-          <form id="tempLogForm" onSubmit={handleSubmit} className="">
-            <label
-              htmlFor="celsius"
-              className="text-[#FFFFFF] font-bold text-6xl "
-            >
-              Temperature Log
-            </label>
-            <div className="flex flex-col items-center">
-              <input
-                className="rounded-3xl py-2 px-5 my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto 
-                  bg-transparent border border-white text-[#5F5C80] placeholder-white focus:outline-none"
-                type="number"
-                placeholder="Enter Temperature (°C)"
-                id="celsius"
-                name="celsius"
-                required
-              />
-              <button
-                className="my-3 mx-3 w-[350px] md:w-[700px] lg:w-[425px] h-auto py-2 px-5 bg-[#AE3966] text-white font-semibold rounded-3xl"
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+        <div className="card mx-auto p-4 max-w-[350px] rounded-md" >
+      <h4 class="mb-3 text-center">Input your Drone</h4>
+      <form id="tempLogForm" onSubmit={handleSubmit} className="flex flex-col">
+          <label className="form-label text-start my-2">Drone ID</label>
+          <input name="drone_id" type="number" className="form-control text-center rounded-md" required placeholder="Enter Drone ID"/>
+
+          <label className="form-label text-start my-2">Drone Name</label>
+          <input name="drone_name" type="text" className="form-control text-center rounded-md" required placeholder="Enter Drone Name" />
+
+          <label className="form-label text-start my-2">Country</label>
+          <input name="country" type="text" className="form-control text-center rounded-md" required placeholder="Enter Country"/>
+
+          <label className="form-label text-start my-2">Temperature (°C)</label>
+          <input name="celsius" type="number" className="form-control text-center rounded-md" required placeholder="Enter Temperature"/>
+
+          <button type="submit" className="btn w-100 py-1 my-3 rounded-md">Submit Data</button>
+        </form>
         </div>
       )}
     </div>

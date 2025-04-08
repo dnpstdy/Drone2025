@@ -3,22 +3,29 @@ import Script from "next/script";
 import Navbar from "./components/navbar";
 
 export const metadata = {
-  title: "65010144_drone_api_front", 
-  description: "", 
+  title: "Drone",
+  description: "Drone",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="body">
-        <Script 
-          src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/bouncy.js" 
-          type="module" 
-          strategy="lazyOnload" 
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+          rel="stylesheet"
         />
-        <Navbar/>
+      </head>
+      <body className="body">
+        <Navbar />
         {children}
-      <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/tailspin.js"></script>
+        <Script
+          type="module"
+          src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/momentum.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

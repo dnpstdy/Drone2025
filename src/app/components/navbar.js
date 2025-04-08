@@ -1,24 +1,34 @@
-import Link from 'next/link'
+'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+    const pathname = usePathname();
+
+    const navItems = [
+        { label: 'Temp', href: '/tempLog' },
+        { label: 'Config', href: '/' },
+        { label: 'Logs', href: '/viewLog' },
+    ];
 
     return (
-                <div className="bg-white/15 fixed top-0 left-0 w-full z-50">
-                <nav className="py-10 px-16">
-                    <ul className="flex flex-row justify-end gap-8">
-                    <li className="text-[#D7D7D7] font-semibold hover-underline-animation right">
-                        <Link href="/">View Config</Link>
-                    </li>
-                    <li className="text-[#D7D7D7] font-semibold rounded-[15px] hover-underline-animation right">
-                        <Link href="/tempLog">Temperature Log</Link>
-                    </li>
-                    <li className="text-[#D7D7D7] font-semibold rounded-[15px] hover-underline-animation right">
-                        <Link href="/viewLog">View Logs</Link>
-                    </li>
-                    </ul>
-                </nav>
-                </div>
+        <div className="">
+            <nav className="">
+                <ul className="flex flex-row justify-center my-10 gap-24">
+                    {navItems.map((item) => (
+                        <li
+                            key={item.href}
+                            className={`mx-2 px-3 py-1 rounded ${
+                                pathname === item.href ? 'unmuted' : 'unselected'
+                            }`}
+                        >
+                            <Link href={item.href}>{item.label}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </div>
     );
 };
 
