@@ -69,7 +69,7 @@ const ViewLog = () => {
     
         if (currentPage > sideButtons + 2) {
             buttons.push(
-                <span key="dots-start" className="px-4 py-2 mx-1 bg-[#2D3437] text-[#C1DEE2] font-semibold rounded-md ">...</span>
+                <span key="dots-start" className="px-4 py-2 mx-1 text-S-300 font-semibold rounded-[50%] drop-shadow-[0_0_3.81px_rgba(255,255,255,0.25)]">...</span>
             );
         }
     
